@@ -14,7 +14,6 @@ export default function ArticleDetail() {
   const [likes, setLikes] = useState(30);
   const [isLiked, setIsLiked] = useState(false);
   const [bookmarkCount, setBookmarkCount] = useState(30);
-
   const handleBookmarkClick = () => {
     setIsBookmarked((prev) => {
       if (!prev) {
@@ -25,7 +24,6 @@ export default function ArticleDetail() {
       return !prev;
     });
   };
-
   const handleLikeClick = () => {
     setIsLiked((prev) => {
       if (prev) {
@@ -36,7 +34,6 @@ export default function ArticleDetail() {
       return !prev;
     });
   };
-
   return (
     <>
       <div className="container mx-auto px-4 mt-10">
@@ -45,17 +42,14 @@ export default function ArticleDetail() {
             <div className="profileAutor">
               <img
                 className="w-32 h-32 rounded-full object-cover"
-                src={
-                  // profileUrl ||
-                  "https://st3.depositphotos.com/3431221/13621/v/450/depositphotos_136216036-stock-illustration-man-avatar-icon-hipster-character.jpg"
-                }
+                src={profileUrl}
                 alt="Profile"
               />
             </div>
             <div className="infoAutor ml-4">
               <h3 className="text-2xl font-semibold">{username}</h3>
               <p className="text-gray-500 text-sm">
-                Last updated: {new Date({ updated_at }).toLocaleString()}
+                Last updated: {updated_at}
               </p>
             </div>
           </div>
@@ -63,7 +57,7 @@ export default function ArticleDetail() {
           <img
             src={thumbnail}
             alt="Thumbnail"
-            className="w-full h-96 object-cover mb-4 "
+            className="w-full h-96 object-contain mb-4 "
           />
           <p className="text-gray-700 mb-8">{content}</p>
           <div className="flex justify-between mt-4">
@@ -94,14 +88,12 @@ export default function ArticleDetail() {
       </div>
       <h2 className="text-2xl font-semibold mt-10 ml-5">Mores Post</h2>
       <div className="moresPost flex gap-4 justify-center items-center">
-        {[1, 2, 3, 4].map((index) => (
-          <BlogCard
-            className=""
-            thumbnail={thumbnail}
-            title={title}
-            content={content}
-          />
-        ))}
+        <BlogCard
+          className=""
+          thumbnail={thumbnail}
+          title={title}
+          content={content}
+        />
       </div>
     </>
   );

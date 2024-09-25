@@ -12,6 +12,7 @@ import Verify from "./pages/auth/Verify.jsx";
 import { AboutUs } from "./pages/Aboutus.jsx";
 import EditProfile from "./pages/auth/EditProfile.jsx";
 import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+import PostCard from "./pages/auth/PostCard.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/articledetail",
         element: <ArticleDetail />,
+      },
+      {
+        path: "/postcard",
+        element: <PostCard />,
       },
     ],
   },

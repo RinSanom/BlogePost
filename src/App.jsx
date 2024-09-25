@@ -8,7 +8,7 @@ import BlogList from "./lib/BlogeList.jsx";
 function App() {
   return (
     <>
-      <PostCard />
+      {/* <PostCard /> */}
       {/* Hero section */}
       <div>
         <div className="bg-blue-950 w-full flex justify-between">

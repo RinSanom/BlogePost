@@ -1,27 +1,33 @@
 import { setAccessToken } from "../../../lib/secureLocalStorage";
 // register action
 export async function register(values) {
+  // Convert values to JSON
+  const body = JSON.stringify(values);
+  console.log("Request Body:", body); // Log the request body
+
   try {
-    const response = await fetch("https://blog-api.automatex.dev/register/", {
+    // Make the fetch request
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: body,
     });
 
-    // Check if the response is ok (status in the range 200-299)
+    // Check if response is ok
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || "Registration failed");
+      console.error("Server Error:", errorData);
+      throw new Error(
+        `Error ${response.status}: ${errorData.message || response.statusText}`
+      );
     }
 
     const data = await response.json();
-    console.log("Data in function:", data);
     return data;
   } catch (error) {
     console.error("Error during registration:", error);
-    return { status: true, message: error.message }; // Return structured error response
   }
 }
 

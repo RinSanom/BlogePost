@@ -13,6 +13,7 @@ export default function BlogList() {
     }
     fetchAllBlogs();
   }, []);
+
   return (
     <>
       <div className="flex flex-wrap">
@@ -24,6 +25,7 @@ export default function BlogList() {
             content={blog.content}
             username={blog.author.username}
             profileUrl={blog.author.profileUrl}
+            updated_at={blog.author.updated_at}
           />
         ))}
       </div>

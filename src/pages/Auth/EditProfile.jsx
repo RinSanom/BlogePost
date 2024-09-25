@@ -1,27 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+
 const ProfileCard = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    fullName: "Paul Thomas",
-    designation: "Sr. Support Agent",
-    position: "Data Science",
-    location: "Phnom Penh",
-    phone: "(855) 97123456 / 12345678",
-    email: "paulaguillar1992@gmail.com",
-    ranking: "⭐️⭐️⭐️⭐️",
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    navigate("/profile", { state: { profile: formData } });
-  };
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 w-80">
+    <div className="bg-white shadow-md rounded-lg p-6 w-80 ">
       <div className="mb-4">
         <label className="block text-sm font-semibold text-gray-700">
           Full Name
@@ -52,6 +33,9 @@ const ProfileCard = () => {
           placeholder="paulaguillar1992@gmail.com"
         />
       </div>
+      <button className="w-full bg-primary200 text-white py-2 rounded-md hover:bg-primary100 transition duration-200">
+        Save
+      </button>
     </div>
   );
 };

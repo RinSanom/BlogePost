@@ -7,13 +7,9 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   const profile = location.state?.profile || {
-    fullName: "Paul Thomas",
-    designation: "Sr. Support Agent",
+    fullName: "Odin",
+    designation: "I'm the author of ",
     position: "Data Science",
-    location: "Phnom Penh",
-    phone: "(855) 97123456 / 12345678",
-    email: "paulaguillar1992@gmail.com",
-    ranking: "⭐️⭐️⭐️⭐️",
   };
 
   return (
@@ -23,8 +19,8 @@ const ProfilePage = () => {
           <div className="flex items-center mb-6">
             <div className="flex flex-col items-center">
               <img
-                className="w-32 h-32 rounded-full shadow-md"
-                src="https://via.placeholder.com/150"
+                className="w-32 h-32 rounded-full shadow-md object-cover"
+                src=""
                 alt="Profile"
               />
               <button
@@ -40,10 +36,6 @@ const ProfilePage = () => {
               </h1>
               <p className="text-lg text-gray-600">{profile.designation}</p>
               <p className="text-gray-700">Position: {profile.position}</p>
-              <p className="text-gray-700">Ranking: {profile.ranking}</p>
-              <p className="text-gray-700">Location: {profile.location}</p>
-              <p className="text-gray-700">Phone: {profile.phone}</p>
-              <p className="text-gray-700">Email: {profile.email}</p>
             </div>
           </div>
           <div>

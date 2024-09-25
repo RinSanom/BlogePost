@@ -1,3 +1,4 @@
+import { key } from "localforage";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -23,7 +24,6 @@ function PostCard({ addBlogPost }) {
       console.log("API Endpoint:", `${import.meta.env.VITE_BASE_URL}/blogs`);
       console.log("Request Body:", JSON.stringify(newCard));
       console.log("Authorization Token:", token); // Log the token
-
       if (!token) {
         console.error(
           "Authorization Token is undefined. Check your .env file."
@@ -44,7 +44,7 @@ function PostCard({ addBlogPost }) {
 
         if (response.ok) {
           const savedPost = await response.json();
-          addBlogPost({ ...savedPost, id: Date.now() });
+          addBlogPost({ ...savedPost, key: Date.now() });
           setCardTitle("");
           setCardContent("");
           setSelectedImage(null);
@@ -100,11 +100,10 @@ function PostCard({ addBlogPost }) {
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          className="bg-primary200 text-white px-4 py-2 rounded-lg hover:bg-primary100"
         >
           Add Card
         </button>
-
         {successMessage && (
           <p className="mt-2 text-green-600 font-semibold">{successMessage}</p>
         )}
