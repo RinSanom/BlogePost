@@ -1,46 +1,75 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ArticleCard } from "../../components/card/UserBlogCard";
+import { ArticleCard } from "../../components/card/UserBlogCard"; // Replace with your actual ArticleCard import
 
-const Profile = () => {
+const ProfilePage = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Correctly defined here
-  const { username, bio, profileUrl } = location.state || {};
+  const navigate = useNavigate();
+
+  const profile = location.state?.profile || {
+    fullName: "Paul Thomas",
+    designation: "Sr. Support Agent",
+    position: "Data Science",
+    location: "Phnom Penh",
+    phone: "(855) 97123456 / 12345678",
+    email: "paulaguillar1992@gmail.com",
+    ranking: "⭐️⭐️⭐️⭐️",
+  };
 
   return (
     <main className="mt-16">
       <div className="min-h-screen bg-gray-100 p-6">
-        <div className="bg-white p-6 rounded-lg mx-auto shadow-lg">
-          <div className="flex items-center">
-            <div className="flex w-full items-start p-5 bg-white shadow-md rounded-lg">
-              <div className="flex flex-col items-center">
-                <img
-                  className="w-40 h-40 rounded-full border-4"
-                  src={profileUrl} // Use the profileUrl from state
-                  alt="Profile"
-                />
-                <button
-                  onClick={() => navigate("/editprofile")}
-                  className="text-blue-600 mt-2 hover:underline"
-                >
-                  Edit Profile
-                </button>
-              </div>
-              <div className="ml-14 p-2">
-                <h1 className="text-2xl font-bold text-gray-800">
-                  Name: {username}
-                </h1>{" "}
-                {/* Display user's name */}
-                <p className="text-sm text-gray-600">{bio}</p>{" "}
-                {/* Display user's bio */}
-              </div>
+        <div className="bg-white p-8 rounded-lg shadow-lg mx-auto ">
+          <div className="flex items-center mb-6">
+            <div className="flex flex-col items-center">
+              <img
+                className="w-32 h-32 rounded-full shadow-md"
+                src="https://via.placeholder.com/150"
+                alt="Profile"
+              />
+              <button
+                onClick={() => navigate("/editprofile")}
+                className="text-blue-600 mt-2 hover:underline"
+              >
+                Edit Profile
+              </button>
+            </div>
+            <div className="ml-6">
+              <h1 className="text-3xl font-semibold text-gray-800">
+                {profile.fullName}
+              </h1>
+              <p className="text-lg text-gray-600">{profile.designation}</p>
+              <p className="text-gray-700">Position: {profile.position}</p>
+              <p className="text-gray-700">Ranking: {profile.ranking}</p>
+              <p className="text-gray-700">Location: {profile.location}</p>
+              <p className="text-gray-700">Phone: {profile.phone}</p>
+              <p className="text-gray-700">Email: {profile.email}</p>
             </div>
           </div>
-          {/* Additional Content Here */}
+          <div>
+            <h2 className="text-2xl font-bold mb-4">
+              Written by {profile.fullName}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Example Article Card */}
+              {Array(4)
+                .fill()
+                .map((_, index) => (
+                  <ArticleCard
+                    key={index}
+                    author="Natal Craig"
+                    date="14 Jan 2022"
+                    title="How collaboration makes us better designers"
+                    description="Collaboration can make our teams stronger and our individual designs better."
+                    image="https://via.placeholder.com/300"
+                  />
+                ))}
+            </div>
+          </div>
         </div>
       </div>
     </main>
   );
 };
 
-export default Profile;
+export default ProfilePage;
