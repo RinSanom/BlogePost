@@ -28,6 +28,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
   // Handle logout
   const handleLogout = () => {
     removeAccessToken();
+    setAccessToken(""); // Clear accessToken after logout
   };
   const [colorTheme, setTheme] = darkMode();
   const [darkSide, setDarkSide] = useState(

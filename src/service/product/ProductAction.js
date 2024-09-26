@@ -14,10 +14,10 @@ export async function getAllProducts() {
 }
 
 // get a single product
-export async function getSingleProducts(id) {
+export async function getSingleProducts(title) {
   try {
     // method fetch
-    const response = fetch(`${BASE_URL}products/${id}`).then((res) =>
+    const response = fetch(`${BASE_URL}products/${title}`).then((res) =>
       res.json()
     );
     const data = await response;

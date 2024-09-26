@@ -9,9 +9,9 @@ export default async function getAllBlogs() {
   }
 }
 
-export async function getSingleBlog(id) {
+export async function getSingleBlog(title) {
   try {
-    const response = await fetch(`https://blog-api.automatex.dev/blogs/${id}`);
+    const response = await fetch(`https://blog-api.automatex.dev/blogs/${title}`);
     const data = await response.json();
     return data;
   } catch (error) {
