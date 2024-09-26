@@ -1,10 +1,10 @@
 import secureLocalStorage from "react-secure-storage";
 
 // set access token
-export const setAccessToken = (accessToken) => {
+export const setAccessToken = (access_token) => {
   secureLocalStorage.setItem(
     import.meta.env.VITE_SECURE_LOCAL_STORAGE_HASH_KEY,
-    accessToken
+    access_token
   );
 };
 
@@ -15,7 +15,6 @@ export const getAccessToken = () => {
   );
   return accessToken;
 };
-
 // remove access token
 export const removeAccessToken = () => {
   secureLocalStorage.removeItem(

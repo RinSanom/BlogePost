@@ -20,7 +20,7 @@ export default function Verify() {
     }
   };
   return (
-    <section className="flex justify-center mt-10">
+    <section className="flex justify-center mt-10 dark:bg-black">
       <dev className="w-1/2 bg-slate-100 p-5 rounded-md">
         <Formik
           initialValues={{

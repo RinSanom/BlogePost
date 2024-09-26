@@ -15,18 +15,28 @@ import {
   removeAccessToken,
 } from "../../lib/secureLocalStorage";
 import { useEffect, useState } from "react";
-
+import darkMode from "../../pages/auth/DarkMode";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 export function NavbarComponent({ username, profileUrl, bio }) {
-  const [accessToken, setAccessToken] = useState("");
+  const [access_token, setAccessToken] = useState("");
   const location = useLocation();
   useEffect(() => {
     const token = getAccessToken();
     setAccessToken(token);
   }, []);
-
   // Handle logout
   const handleLogout = () => {
     removeAccessToken();
+  };
+  const [colorTheme, setTheme] = darkMode();
+  const [darkSide, setDarkSide] = useState(
+    colorTheme === "lighht" ? true : false
+  );
+
+  const toggleDarkMode = () => {
+    setTheme(colorTheme);
+    setDarkSide(!darkSide);
   };
 
   return (
@@ -47,8 +57,19 @@ export function NavbarComponent({ username, profileUrl, bio }) {
       </NavbarBrand>
 
       <div className="flex items-center md:order-2">
-        {accessToken ? (
+        {access_token ? (
           <>
+            <button onClick={() => toggleDarkMode(false)}>
+              {darkSide ? (
+                <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faSun}
+                  className="h-6 mt-2 mx-3 text-white"
+                />
+              )}
+            </button>
+
             <div className="icon flex items-center justify-center ">
               <Link
                 to="/postcard"
@@ -63,7 +84,10 @@ export function NavbarComponent({ username, profileUrl, bio }) {
                   <div className="profile">
                     <img
                       className="w-11 h-11 rounded-full border-2 border-primary100 transition duration-300 hover:scale-110 object-cover"
-                      src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+                      src={
+                        { profileUrl } ||
+                        "https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+                      }
                       alt="Profile"
                     />
                   </div>
@@ -86,6 +110,16 @@ export function NavbarComponent({ username, profileUrl, bio }) {
           </>
         ) : (
           <>
+            <button onClick={() => toggleDarkMode(false)}>
+              {darkSide ? (
+                <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faSun}
+                  className="h-6 mt-2 mx-3 text-white"
+                />
+              )}
+            </button>
             <Button
               as={Link}
               to="/register"

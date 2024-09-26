@@ -18,7 +18,7 @@ export default function Post() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200 mt-10">
+    <div className="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200 mt-10 dark:bg-black">
       <h1 className="font-bold text-center text-3xl text-gray-800 mb-6">
         Create Your Post
       </h1>

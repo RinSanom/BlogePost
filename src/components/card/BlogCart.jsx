@@ -15,13 +15,10 @@ export default function BlogCard({
   username,
   updated_at,
   profileUrl,
-}) {
+  bio,
+} = {}) {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
-  const [bookmarks, setBookmarks] = useState(0);
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [shares, setShares] = useState(0);
-
   const handleLikeClick = () => {
     setIsLiked((prev) => !prev);
     setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
@@ -42,9 +39,9 @@ export default function BlogCard({
   };
 
   return (
-    <div className="m-auto pt-5">
-      <div className="grid grid-col-1 max-w-screen-xl mx-auto px-4">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden w-[300px] h-[400px] border border-gray-200 transition-transform transform hover:scale-105">
+    <div className="m-auto pt-5 d">
+      <div className="grid grid-col-1 max-w-screen-xl mx-auto px-4 ">
+        <div className="dark:bg-black dark:text-white rounded-lg shadow-lg overflow-hidden w-[300px] h-[400px] border border-gray-200 transition-transform transform hover:scale-105">
           <Link
             to="/articledetail"
             state={{
@@ -54,6 +51,7 @@ export default function BlogCard({
               username,
               updated_at,
               profileUrl,
+              bio,
             }}
           >
             <img
@@ -62,9 +60,15 @@ export default function BlogCard({
               className="w-full h-48 object-cover transition-opacity duration-300 hover:opacity-90"
             />
             <div className="flex items-center p-2">
-              <Link to="/profile">
+              <Link
+                to="/profile"
+                state={{ profileUrl, username, bio, thumbnail, title, content }}
+              >
                 <img
-                  src={profileUrl}
+                  src={
+                    profileUrl ||
+                    "https://i.pinimg.com/564x/69/fb/1f/69fb1f2853d3d2ac18f2faf3fb9c8774.pg"
+                  }
                   className="w-12 h-12 rounded-full object-cover"
                   alt="Profile"
                 />
@@ -95,25 +99,6 @@ export default function BlogCard({
                 )}
               </button>
               <span className="badge text-sm">{likes}</span>
-            </div>
-            <div className="flex items-center gap-2 mb-2 sm:mb-0">
-              <button
-                onClick={handleBookmarkClick}
-                className="flex items-center"
-              >
-                {isBookmarked ? (
-                  <FaBookmark className="text-blue-500" />
-                ) : (
-                  <FaRegBookmark />
-                )}
-              </button>
-              <span className="badge text-sm">{bookmarks}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button onClick={handleShare} className="flex items-center">
-                <FaShare />
-              </button>
-              <span className="badge text-sm">{shares}</span>
             </div>
           </div>
         </div>

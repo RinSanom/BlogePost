@@ -30,7 +30,7 @@ export default function ProductCard({ thumbnail, title, content, id }) {
     });
   };
   return (
-    <div className="flex mx-28">
+    <div className="flex mx-28 dark:bg-black">
       <div className="bg-white  rounded-lg overflow-hidden w-80 border-2">
         <Link to="/articledetail ">
           <img src={thumbnail} alt="" className="w-full h-48 object-cover" />

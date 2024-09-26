@@ -52,7 +52,6 @@ export async function verify(values) {
     console.log(error);
   }
 }
-
 //login
 export async function login(values) {
   //   convert value to json

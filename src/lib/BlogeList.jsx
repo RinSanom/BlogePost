@@ -25,6 +25,7 @@ export default function BlogList() {
             content={blog.content}
             username={blog.author.username}
             profileUrl={blog.author.profileUrl}
+            bio={blog.author.bio}
             updated_at={blog.author.updated_at}
           />
         ))}

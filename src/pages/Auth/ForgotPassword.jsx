@@ -12,7 +12,7 @@ export default function ForgotPassword() {
     navigate("/verifyotp");
   };
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-r">
+    <div className="flex h-screen items-center justify-center bg-gradient-to-r dark:bg-black">
       <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg">
         <Formik initialValues={{ email: "" }} onSubmit={handleSubmit}>
           {() => (

@@ -5,30 +5,30 @@ import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { login } from "./action/authAction";
+
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate(); // Move useNavigate here
+  const navigate = useNavigate();
 
   const initialValues = {
-    password: "",
-    name: "",
-    password: "",
+    username: "",
+    password: "Ifmesayyes123!",
     rememberMe: false,
   };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
+    username: Yup.string().required("Username is required"),
     password: Yup.string().required("Password is required"),
   });
 
   const handleSubmit = async (values) => {
     try {
-      const loginRes = await login(values); // Assuming `login` is an API call function
-      console.log("Login Response:", loginRes); // Log the response to inspect its structure
-
-      if (loginRes.access) {
+      const loginRes = await login(values);
+      console.log("Login Response:", loginRes); // Log the entire response for debugging
+      if (loginRes.access_token) {
         toast.success("Login Successfully");
-        navigate("/"); // Navigate to the home page
+        console.log("Navigating to home...");
+        navigate("/");
       } else if (loginRes.message) {
         toast.error(loginRes.message); // Show error message from the server
       } else {
@@ -39,14 +39,15 @@ export default function Login() {
       toast.error("An error occurred. Please try again later."); // Generic error message for unexpected issues
     }
   };
+
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-r">
-      <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg ">
-        <div className="w-[500px] ">
-          <div className="w-[100%] flex justify-center">
+    <div className="flex h-screen items-center justify-center bg-gradient-to-r dark:bg-black">
+      <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg">
+        <div className="w-[500px]">
+          <div className="w-full flex justify-center">
             <img
               src="./public/assets/LogoFinal.png"
-              className="w-[100px] "
+              className="w-[100px]"
               alt="Logo"
             />
           </div>
@@ -63,12 +64,12 @@ export default function Login() {
                 <div className="relative">
                   <Field
                     type="text"
-                    name="name"
-                    placeholder="Name"
+                    name="username"
+                    placeholder="Username"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
                   />
                   <ErrorMessage
-                    name="name"
+                    name="username"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
@@ -96,6 +97,7 @@ export default function Login() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
+                  onSubmit={handleSubmit}
                   className="w-full px-4 py-2 mt-6 bg-primary200 hover:bg-primary100 text-white font-semibold rounded-md transition duration-200"
                 >
                   {isSubmitting ? "Loading..." : "Login"}

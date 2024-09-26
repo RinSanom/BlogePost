@@ -77,7 +77,7 @@ function PostCard({ addBlogPost }) {
     });
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 dark:bg-black">
       <form onSubmit={handleAddCard} className="mb-4">
         <ReactQuill
           value={cardTitle}

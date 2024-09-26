@@ -7,7 +7,7 @@ export function NewPassword() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen dark:bg-black">
       <h1 className="font-bold text-2xl text-center mt-[3rem] mb-10 sm:mt-16 sm:mb-8">
         New Password
       </h1>

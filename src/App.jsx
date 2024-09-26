@@ -10,8 +10,8 @@ function App() {
     <>
       {/* <PostCard /> */}
       {/* Hero section */}
-      <div>
-        <div className="bg-blue-950 w-full flex justify-between">
+      <div className="dark:bg-black">
+        <div className="bg-blue-950 w-full dark:bg-black flex justify-between">
           <div className="flex image">
             <div className="my-auto ml-20">
               <div className="flex font-bold space-x-2">
