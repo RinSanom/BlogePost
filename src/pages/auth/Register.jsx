@@ -10,6 +10,8 @@ import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  // Regex for password validation
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -30,6 +32,7 @@ export default function Register() {
       .required("Password is required"),
   });
 
+  // Handle form submission
   const handleRegister = async (values) => {
     console.log("Value in handleRegister:", values);
     const email = values.email;

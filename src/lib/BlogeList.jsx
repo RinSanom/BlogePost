@@ -16,7 +16,7 @@ export default function BlogList() {
 
   return (
     <>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap dark:bg-black">
         {blogs.map((blog) => (
           <BlogCard
             key={blog.id}

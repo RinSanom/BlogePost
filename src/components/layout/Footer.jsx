@@ -3,8 +3,8 @@ import { Footer, FooterBrand, FooterCopyright, FooterDivider, FooterLink, Footer
 
 export function Footercomponent() {
   return (
-    <Footer container>
-      <div className="w-full text-center">
+    <Footer container className="dark:bg-black ">
+      <div className="w-full text-center ">
         <div className="w-full justify-around sm:flex sm:items-center sm:justify-between">
           <FooterBrand
             href="./public/assets/LogoFinal.png"

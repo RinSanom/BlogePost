@@ -39,6 +39,8 @@ export function NavbarComponent({ username, profileUrl, bio }) {
     setDarkSide(!darkSide);
   };
 
+  //darmode
+
   return (
     <Navbar
       fluid
@@ -60,7 +62,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
         {access_token ? (
           <>
             <button onClick={() => toggleDarkMode(false)}>
-              {darkSide ? (
+              {!darkSide ? (
                 <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
               ) : (
                 <FontAwesomeIcon
@@ -111,7 +113,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
         ) : (
           <>
             <button onClick={() => toggleDarkMode(false)}>
-              {darkSide ? (
+              {!darkSide ? (
                 <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
               ) : (
                 <FontAwesomeIcon

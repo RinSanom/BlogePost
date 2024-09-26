@@ -6,7 +6,7 @@ import { CiBookmark } from "react-icons/ci";
 
 export function ArticleCard({ author, date, title, description, image }) {
   return (
-    <div className="bg-white p-4 rounded-lg  transition duration-300">
+    <div className=" dark:bg-black p-4 rounded-lg  transition duration-300">
       <div className="mb-4">
         <img
           src={image}

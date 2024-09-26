@@ -58,7 +58,7 @@ export async function login(values) {
   const body = JSON.stringify(values);
   try {
     // method fetch
-    const response = fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
+    const response = fetch(`${import.meta.env.VITE_BASE_URL}login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export async function login(values) {
       body: body,
     }).then((res) => res.json());
     const data = await response;
-    console.log("data in function", data);
+    // console.log("data in function", data);
     setAccessToken(data.access);
     return data;
   } catch (error) {

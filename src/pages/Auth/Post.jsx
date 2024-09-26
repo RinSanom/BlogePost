@@ -37,14 +37,14 @@ export default function Post() {
       <textarea
         id="message"
         rows="4"
-        className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mb-6 transition duration-200 ease-in-out"
+        className="block p-3 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 mb-6 transition duration-200 ease-in-out"
         placeholder="Write your thoughts here..."
       ></textarea>
 
       <div className="flex items-center justify-center w-full mb-6">
         <label
           htmlFor="dropzone-file"
-          className="flex flex-col items-center justify-center w-full  border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition duration-200 ease-in-out"
+          className="flex flex-col items-center justify-center w-full  border-2 border-gray-300 border-dashed rounded-lg cursor-pointer  hover:bg-gray-100 transition duration-200 ease-in-out"
         >
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <svg

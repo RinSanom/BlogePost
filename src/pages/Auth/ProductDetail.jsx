@@ -18,7 +18,7 @@ export default function ProductDetail() {
   console.log("product", product);
   console.log("param", param);
   return (
-    <div className="flex justify-center items-center ">
+    <div className="flex justify-center items-center dark:bg-black">
       <ArticleDetail
         thumbnail={product.thumbnail}
         title={product.title}

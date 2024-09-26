@@ -26,7 +26,7 @@ export function AboutUs() {
           </p>
         </div>
         <div className="flex items-center justify-center">
-          <div className="bg-white h-32 w-32 md:h-48 md:w-48 flex items-center justify-center">
+          <div className=" h-32 w-32 md:h-48 md:w-48 flex items-center justify-center">
             <img
               src="./public/assets/team-1.gif"
               alt="Your Image"

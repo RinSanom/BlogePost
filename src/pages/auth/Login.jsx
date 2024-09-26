@@ -12,16 +12,26 @@ export default function Login() {
 
   const initialValues = {
     username: "",
-    password: "Ifmesayyes123!",
+    password: "",
     rememberMe: false,
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
+    username: Yup.string()
+      .matches(
+        /^[a-zA-Z0-9_]*$/,
+        "Username must contain only letters, numbers, and underscores"
+      )
+      .required("Username is required"),
+    password: Yup.string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character"
+      )
+      .required("Password is required"),
   });
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
       const loginRes = await login(values);
       console.log("Login Response:", loginRes); // Log the entire response for debugging
@@ -30,13 +40,12 @@ export default function Login() {
         console.log("Navigating to home...");
         navigate("/");
       } else if (loginRes.message) {
-        toast.error(loginRes.message); // Show error message from the server
-      } else {
-        toast.error("Login failed. Please check your credentials."); // Fallback error message
+        toast.error(loginRes.message);
       }
     } catch (error) {
-      console.error("Error during login:", error); // Log any errors that occur during the API call
-      toast.error("An error occurred. Please try again later."); // Generic error message for unexpected issues
+      toast.error("An error occurred during login. Please try again.");
+    } finally {
+      resetForm();
     }
   };
 
@@ -97,23 +106,10 @@ export default function Login() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  onSubmit={handleSubmit}
-                  className="w-full px-4 py-2 mt-6 bg-primary200 hover:bg-primary100 text-white font-semibold rounded-md transition duration-200"
+                  className="mt-5 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
-                  {isSubmitting ? "Loading..." : "Login"}
+                  Login
                 </button>
-                <div className="flex items-center justify-between mt-4">
-                  <label className="flex items-center">
-                    <Field type="checkbox" name="rememberMe" className="mr-2" />
-                    Remember Me
-                  </label>
-                  <Link
-                    to="/ForgotPassword"
-                    className="text-blue-600 hover:underline"
-                  >
-                    Forgot Password?
-                  </Link>
-                </div>
               </Form>
             )}
           </Formik>
@@ -126,7 +122,7 @@ export default function Login() {
         </div>
         <div>
           <img
-            src="./public/assets/Sign up-bro.png"
+            src="/assets/Sign up-bro.png"
             alt="Hero Image"
             className="max-h-96 object-cover rounded-lg"
           />
